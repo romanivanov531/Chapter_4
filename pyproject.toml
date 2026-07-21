@@ -24,3 +24,27 @@ lint = [
 develop = [
     "pytest (>=9.1.1,<10.0.0)"
 ]
+[tool.mypy]
+disallow_untyped_defs = true
+warn_return_any = true
+exclude = ['venv', '.venv', 'test']
+
+
+[tool.black]
+line-length = 119
+exclude = '''
+(
+    /(
+        \.eggs
+       | \.git
+       | \.hg
+       | \.mypy_cache
+       | \.tox
+       | \.venv
+       | dist
+    )/
+)
+'''
+
+[tool.isort]
+line_length = 119

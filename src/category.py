@@ -5,7 +5,7 @@ class Category:
     category_count = 0
     product_count = 0
 
-    def __init__(self, name, description, products=None):
+    def __init__(self, name:str, description:str, products=None):
         if products is None:
             products = []
         self.name = name
