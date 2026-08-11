@@ -1,3 +1,6 @@
+from test.conftest import category
+
+
 def test_category_init(category):
     assert category.name == "Смартфоны"
     assert category.description == ("Смартфоны, как средство не только коммуникации,"
@@ -7,4 +10,7 @@ def test_category_init(category):
 
 def test_category_count(category):
     assert category.category_count == 2
-    assert category.product_count == 0
+
+
+def test_product_count(category_1):
+    assert category_1.product_count == 2
