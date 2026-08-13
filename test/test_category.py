@@ -1,6 +1,3 @@
-from test.conftest import category
-
-
 def test_category_init(category):
     assert category.name == "Смартфоны"
     assert category.description == ("Смартфоны, как средство не только коммуникации,"
