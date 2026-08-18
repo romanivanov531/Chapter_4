@@ -3,26 +3,15 @@ class Product:
     description: str
     __price: float
     quantity: int
-    __products = []
 
     def __init__(self, name: str, description: str, price: float = 0, quantity: int = 0):
         self.name = name
         self.description = description
         self.__price = price
         self.quantity = quantity
-        Product.__products.append({
-            'name' : name,
-            'description' : description,
-            'price' : price,
-            'quantity' : quantity
-        })
 
     @classmethod
-    def new_product(cls, params: dict):
-        for product in Product.__products:
-            if params['name'] == product['name']:
-                params['quantity'] += product['quantity']
-
+    def new_product(cls, params):
         return cls(params['name'], params['description'], params['price'], params['quantity'])
 
     @property
@@ -33,9 +22,11 @@ class Product:
     def price(self, new_price):
         if new_price <= 0:
             print('Цена не должна быть нулевая или отрицательная')
+            return
+        if new_price < self.__price:
+            answer = input('Вы уверены, что хотите изменить цену?\n'
+                           'Y - да, N - нет.\n')
+            if answer.lower() == 'y':
+                self.__price = new_price
         else:
-            if new_price < self.__price:
-                confirm = input('Вы уверены, что хотите изменить цену?\n'
-                                'Y - да, N - нет\n')
-                if confirm.lower() == 'y':
-                    self.__price = new_price
+            self.__price = new_price

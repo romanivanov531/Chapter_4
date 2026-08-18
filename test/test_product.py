@@ -5,6 +5,11 @@ def test_product_init(product):
     assert product.quantity == 5
 
 
-def test_product_no_price(product_1):
-    assert product_1.price == 0
-    assert product_1.quantity == 0
+def test_product_no_price(product_two):
+    assert product_two.price == 0
+    assert product_two.quantity == 0
+
+
+def test_product_change_price(product_one):
+    product_one.price = 200000
+    assert product_one.price == 200000

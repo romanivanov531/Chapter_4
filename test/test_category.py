@@ -1,13 +1,14 @@
-def test_category_init(category):
-    assert category.name == "Смартфоны"
-    assert category.description == ("Смартфоны, как средство не только коммуникации,"
-                                    " но и получения дополнительных функций для удобства жизни")
-    assert category.products == []
+def test_category_count(category_one):
+    assert category_one.category_count == 1
 
 
-def test_category_count(category):
-    assert category.category_count == 2
+def test_product_count(category_one):
+    assert category_one.product_count == 4
 
 
-def test_product_count(category_1):
-    assert category_1.product_count == 2
+def test_category(category_one, product_two, product_three):
+    assert category_one.name == "Смартфоны"
+    assert (
+        category_one.description
+        == "Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для удобства жизни"
+    )
