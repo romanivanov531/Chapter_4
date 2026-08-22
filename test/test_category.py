@@ -15,8 +15,4 @@ def test_category(category_one, product_two, product_three):
 
 
 def test_category_str(category_one):
-    assert category_one.__str__() == f'Смартфоны, количество продуктов: 2'
-
-
-def test_category_add(category_one):
-    assert category_one.__add__() == 900000.0
+    assert category_one.__str__() == f'Смартфоны, количество продуктов: 5'

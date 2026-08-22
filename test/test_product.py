@@ -1,3 +1,6 @@
+from src.product import Product
+
+
 def test_product_init(product):
     assert product.name == "Samsung Galaxy S23 Ultra"
     assert product.description == "256GB, Серый цвет, 200MP камера"
@@ -17,3 +20,7 @@ def test_product_change_price(product_one):
 
 def test_product_str(product):
     assert product.__str__() == 'Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт.'
+
+
+def test_product_add(product_one, product_two):
+    assert Product.__add__(product_two, product_one) == 900000.0
