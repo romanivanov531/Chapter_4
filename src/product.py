@@ -10,6 +10,13 @@ class Product:
         self.__price = price
         self.quantity = quantity
 
+    def __str__(self):
+        return f'{self.name}, {self.price} руб. Остаток: {self.quantity} шт.'
+
+    def __add__(self, prod_1):
+        total = prod_1.quantity * prod_1.price + self.quantity * self.price
+        return total
+
     @classmethod
     def new_product(cls, params):
         return cls(params['name'], params['description'], params['price'], params['quantity'])
