@@ -4,6 +4,10 @@ from src.category import Category
 from src.product import Product
 
 
+class SubClass(Product):
+    pass
+
+
 @pytest.fixture
 def category():
     return Category(name="Смартфоны",
@@ -33,8 +37,12 @@ def product_three():
     return Product('55" QLED 4K', "Фоновая подсветка", 123000.0, 7)
 
 
+@pytest.fixture
+def product_four():
+    return SubClass("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
+
 @pytest.fixture()
-def category_one(product_one, product_two):
+def category_one_1(product_one, product_two):
     return Category(
         name="Смартфоны",
         description="Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для "
