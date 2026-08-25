@@ -31,3 +31,9 @@ def test_product_add(product_one, product_two):
 def test_add_wrong_type(product_one, product_four):
     with pytest.raises(TypeError):
         product_four + product_one
+
+
+def test_product_mixin(capsys):
+    prod = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
+    captured = capsys.readouterr()
+    assert captured.out == 'Product, Samsung Galaxy S23 Ultra, 256GB, Серый цвет, 200MP камера, 180000.0, 5\n'
