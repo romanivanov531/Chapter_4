@@ -8,6 +8,7 @@ class BaseProduct(ABC):
     def __init__(self, name, description, price, quantity):
         pass
 
+
 class Product(BaseProduct, LogMixin):
     name: str
     description: str
@@ -15,6 +16,8 @@ class Product(BaseProduct, LogMixin):
     quantity: int
 
     def __init__(self, name: str, description: str, price: float = 0, quantity: int = 0):
+        if quantity == 0:
+            raise ValueError('Товар с нулевым количеством не может быть добавлен')
         self.name = name
         self.description = description
         self.__price = price
@@ -52,6 +55,7 @@ class Product(BaseProduct, LogMixin):
         else:
             self.__price = new_price
 
+
 class Smartphone(Product):
     def __init__(self, name, description, price, quantity, efficiency, model, memory, color):
         super().__init__(name, description, price, quantity)
@@ -59,6 +63,7 @@ class Smartphone(Product):
         self.model = model
         self.memory = memory
         self.color = color
+
 
 class LawnGrass(Product):
     def __init__(self, name, description, price, quantity, country, germination_period, color):

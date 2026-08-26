@@ -29,7 +29,7 @@ def product_one():
 
 @pytest.fixture()
 def product_two():
-    return Product("Iphone 15", "512GB, Gray space")
+    return Product("Iphone 15", "512GB, Gray space", quantity=1)
 
 
 @pytest.fixture()
@@ -41,11 +41,12 @@ def product_three():
 def product_four():
     return SubClass("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
 
+
 @pytest.fixture()
-def category_one_1(product_one, product_two):
+def category_one_1(product_one, product_four):
     return Category(
         name="Смартфоны",
         description="Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для "
         "удобства жизни",
-        products=[product_one, product_two],
+        products=[product_one, product_four],
     )
