@@ -1,14 +1,28 @@
-class Product:
+from abc import ABC, abstractmethod
+from src.log_mixin import LogMixin
+
+
+class BaseProduct(ABC):
+
+    @abstractmethod
+    def __init__(self, name, description, price, quantity):
+        pass
+
+
+class Product(BaseProduct, LogMixin):
     name: str
     description: str
     __price: float
     quantity: int
 
     def __init__(self, name: str, description: str, price: float = 0, quantity: int = 0):
+        if quantity == 0:
+            raise ValueError('Товар с нулевым количеством не может быть добавлен')
         self.name = name
         self.description = description
         self.__price = price
         self.quantity = quantity
+        super().__repr__()
 
     def __str__(self):
         return f'{self.name}, {self.price} руб. Остаток: {self.quantity} шт.'
@@ -41,6 +55,7 @@ class Product:
         else:
             self.__price = new_price
 
+
 class Smartphone(Product):
     def __init__(self, name, description, price, quantity, efficiency, model, memory, color):
         super().__init__(name, description, price, quantity)
@@ -48,6 +63,7 @@ class Smartphone(Product):
         self.model = model
         self.memory = memory
         self.color = color
+
 
 class LawnGrass(Product):
     def __init__(self, name, description, price, quantity, country, germination_period, color):

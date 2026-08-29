@@ -12,7 +12,7 @@ def test_product_init(product):
 
 def test_product_no_price(product_two):
     assert product_two.price == 0
-    assert product_two.quantity == 0
+    assert product_two.quantity == 1
 
 
 def test_product_change_price(product_one):
@@ -31,3 +31,19 @@ def test_product_add(product_one, product_two):
 def test_add_wrong_type(product_one, product_four):
     with pytest.raises(TypeError):
         product_four + product_one
+
+
+def test_product_mixin(capsys):
+    Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
+    captured = capsys.readouterr()
+    assert captured.out == 'Product, Samsung Galaxy S23 Ultra, 256GB, Серый цвет, 200MP камера, 180000.0, 5\n'
+
+
+def test_product_no_quantity():
+    with pytest.raises(ValueError):
+        Product(
+            name='Samsung',
+            description='Mobilka',
+            price=120000,
+            quantity=0
+        )
